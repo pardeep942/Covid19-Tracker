@@ -1,5 +1,6 @@
 class CLI
 
+    @@country_found_flag = false
     def start
         puts "Welcome to COVID19 tracker"
         API.fetch_countries
@@ -18,7 +19,12 @@ class CLI
             puts "please enter the country name to see the data for that country"
             country_name = gets.chomp
             country_name = country_name.capitalize
-            Country.find_by_name(country_name)
+            CLI.find_by_name(country_name)
+            if(@@country_found_flag ==false)
+                puts "invalid country name. Please check the spelling of the country name"
+                sleep(1)
+                menu
+            end
             sleep(1)
             menu
 
@@ -40,6 +46,23 @@ class CLI
             puts "#{index}. #{country.name}"
         end
     end
+
+
+    def self.find_by_name(country_name)
+
+        Country.all.each do |country|
+    
+            if (country.name ==country_name) 
+                @@country_found_flag = true
+                puts "#{country.name}"
+                puts "#{country.NewDeaths}"
+                puts ["TotalRecovered","#{country.TotalRecovered}"]
+                puts ["TotalDeaths","#{country.TotalDeaths}"]
+            end
+        end
+    end
+    
+    
 
 
 

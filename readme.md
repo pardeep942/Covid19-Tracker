@@ -10,7 +10,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 Prerequisites
 What things you need to install the software and how to install them
--Installed local terminal, 
 ## require all gems that we will use
 require 'pry'
 require 'net/http'
@@ -21,10 +20,7 @@ require_relative "./lib/cli"
 require_relative "./lib/country"
 
 Installing
-ruby gem  bundle instrall
-
-Deployment
-it's already on my local VSC so need to deploy.
+ruby gems instrall
 
 Add additional notes about how to deploy this on a live system
 Built With
